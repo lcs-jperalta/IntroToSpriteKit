@@ -294,6 +294,18 @@ class GameScene: SKScene {
         letter14.physicsBody?.isDynamic = false
         // Add the letter to the scene
         self.addChild(letter14)
+        
+        // Add penguin
+        let penguin = SKSpriteNode(imageNamed: "TuxClassic_01")
+        penguin.position = CGPoint(x: 200, y: 550)
+        penguin.physicsBody = SKPhysicsBody(texture: penguin.texture!,
+                                         alphaThreshold: 0.5,
+                                         size: penguin.size)
+        let actionScaleUp2 = SKAction.scale(by: 4.0, duration: 0)
+        self.addChild(penguin)
+        penguin.run(actionScaleUp2)
+        
+        
     }
     
     
