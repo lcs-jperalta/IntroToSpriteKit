@@ -49,26 +49,26 @@ PlaygroundSupport.PlaygroundPage.current.liveView = view
     You should see the character repeatedly making a motion.
  
  */
-//// Create [SKTexture] array
-//var throwFireBallTextures: [SKTexture] = []     // Empty array
-//throwFireBallTextures.append(SKTexture(imageNamed: "sf_fireball_0"))
-//throwFireBallTextures.append(SKTexture(imageNamed: "sf_fireball_1"))
-//throwFireBallTextures.append(SKTexture(imageNamed: "sf_fireball_2"))
-//
-//// Create an action to animate throwing a fireball
-//let throwFireballAnimation = SKAction.animate(with: throwFireBallTextures, timePerFrame: 0.2, resize: true, restore: true)
-//
-//// Wait a bit
-//let actionWaitASecond = SKAction.wait(forDuration: 1)
-//
-//// Make a sequence – throw fireball, then wait
-//var actionThrowFireBallThenWait = SKAction.sequence([throwFireballAnimation, actionWaitASecond])
-//
-//// Repeat the sequence
-//var throwFireBallRepeatedly = SKAction.repeatForever(actionThrowFireBallThenWait)
-//
-//// Cause the character to throw the fireball
-//character.run(throwFireBallRepeatedly)
+// Create [SKTexture] array
+var throwFireBallTextures: [SKTexture] = []     // Empty array
+throwFireBallTextures.append(SKTexture(imageNamed: "sf_fireball_0"))
+throwFireBallTextures.append(SKTexture(imageNamed: "sf_fireball_1"))
+throwFireBallTextures.append(SKTexture(imageNamed: "sf_fireball_2"))
+
+// Create an action to animate throwing a fireball
+let throwFireballAnimation = SKAction.animate(with: throwFireBallTextures, timePerFrame: 0.2, resize: true, restore: true)
+
+// Wait a bit
+let actionWaitASecond = SKAction.wait(forDuration: 1)
+
+// Make a sequence – throw fireball, then wait
+var actionThrowFireBallThenWait = SKAction.sequence([throwFireballAnimation, actionWaitASecond])
+
+// Repeat the sequence
+var throwFireBallRepeatedly = SKAction.repeatForever(actionThrowFireBallThenWait)
+
+// Cause the character to throw the fireball
+character.run(throwFireBallRepeatedly)
 
 /*:
  Doesn't it look like the character should be throwing a fireball? Let's make that happen.
@@ -86,37 +86,37 @@ PlaygroundSupport.PlaygroundPage.current.liveView = view
  
  */
 
-//// Add a method to the CGFloat type that converts from degrees to radians
-//// NOTE: Not strictly required, but makes it easier to think about how to rotate the particle emitter
-//extension CGFloat {
-//    func toRadians() -> CGFloat {
-//        return self * CGFloat(Double.pi) / 180
-//    }
-//}
-//
-////// Create an instance of the 'SKParticleEmitter' Node at the right edge of the character's arm
-//func generateFireball() {
-//    
-//    // Attempt to create an SKEmitterNode instance based on a file named "Fire.sks" (see Resources folder)
-//    if let fireball = SKEmitterNode(fileNamed: "Fire") {
-//        
-//        // Create the fireball at the tip of the character's arm
-//        fireball.position = CGPoint(x: character.position.x + 40, y: character.position.y + 27)
-//        
-//        // Make the fireball point to the right
-//        let actionRotate = SKAction.rotate(byAngle: CGFloat(90).toRadians(), duration: 0)
-//        fireball.run(actionRotate)
-//        
-//        // Add fireball to scene
-//        scene.addChild(fireball)
-//        
-//        // Move the fireball
-//        let actionMoveFireball = SKAction.moveTo(x: scene.size.width * 1.5, duration: 1.5)
-//        fireball.run(actionMoveFireball)
-//    }
-//    
-//}
-//
+// Add a method to the CGFloat type that converts from degrees to radians
+// NOTE: Not strictly required, but makes it easier to think about how to rotate the particle emitter
+extension CGFloat {
+    func toRadians() -> CGFloat {
+        return self * CGFloat(Double.pi) / 180
+    }
+}
+
+//// Create an instance of the 'SKParticleEmitter' Node at the right edge of the character's arm
+func generateFireball() {
+    
+    // Attempt to create an SKEmitterNode instance based on a file named "Fire.sks" (see Resources folder)
+    if let fireball = SKEmitterNode(fileNamed: "Fire") {
+        
+        // Create the fireball at the tip of the character's arm
+        fireball.position = CGPoint(x: character.position.x + 40, y: character.position.y + 27)
+        
+        // Make the fireball point to the right
+        let actionRotate = SKAction.rotate(byAngle: CGFloat(90).toRadians(), duration: 0)
+        fireball.run(actionRotate)
+        
+        // Add fireball to scene
+        scene.addChild(fireball)
+        
+        // Move the fireball
+        let actionMoveFireball = SKAction.moveTo(x: scene.size.width * 1.5, duration: 1.5)
+        fireball.run(actionMoveFireball)
+    }
+    
+}
+
 //// Create an action that calls the `generateFireball` method
 //let actionGenerateFireball = SKAction.run(generateFireball)
 //
