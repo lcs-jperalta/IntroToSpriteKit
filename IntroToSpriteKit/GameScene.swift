@@ -305,6 +305,18 @@ class GameScene: SKScene {
         self.addChild(penguin)
         penguin.run(actionScaleUp2)
         
+        // Add cannonball
+        let cannon_ball = SKSpriteNode(imageNamed: "cannon ball")
+        cannon_ball.position = CGPoint(x: 600, y: 600)
+        cannon_ball.physicsBody = SKPhysicsBody(circleOfRadius: cannon_ball.size.width * 0.5)
+        let actionScaleDown = SKAction.scale(by: 0.2, duration: 0)
+        let upLeftThisMuch = CGVector(dx: -500, dy: 50)
+        let actionUpLeftwardsMovement = SKAction.move(by: upLeftThisMuch, duration: 0.5)
+        
+        self.addChild(cannon_ball)
+        cannon_ball.run(actionUpLeftwardsMovement)
+        cannon_ball.run(actionScaleDown)
+        
         
     }
     
